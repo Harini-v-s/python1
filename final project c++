@@ -1,0 +1,92 @@
+/*Name=V.S.Harini
+Clg Name=Vivekanandha college of arts and sciences for womens (autonomous)*/
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Weather class definition
+class Weather {
+private:
+    string location;
+    string weatherCondition;
+    double windSpeed;
+    int pressure;
+    int humidity;
+    int seaLevel;
+    string sunrise;
+    string sunset;
+    double latitude;
+    double longitude;
+
+public:
+    // Constructor
+    Weather(string loc, string cond, double speed, int press, int humid, int level, string rise, string set, double lat, double lon)
+    {
+        location = loc;
+        weatherCondition = cond;
+        windSpeed = speed;
+        pressure = press;
+        humidity = humid;
+        seaLevel = level;
+        sunrise = rise;
+        sunset = set;
+        latitude = lat;
+        longitude = lon;
+    }
+
+    // Display weather information
+    void displayWeather()
+    {
+        cout << "Weather report in: " << location << endl;
+        cout << "Weather Condition: " << weatherCondition << endl;
+        cout << "Wind Speed: " << windSpeed << " m/s" << endl;
+        cout << "Pressure: " << pressure << " hpa" << endl;
+        cout << "Humidity: " << humidity << "%" << endl;
+        cout << "Sea Level: " << seaLevel << " m" << endl;
+        cout << "Sunrise: " << sunrise << endl;
+        cout << "Sunset: " << sunset << endl;
+        cout << "Geo Coords: [" << latitude << ", " << longitude << "]" << endl;
+    }
+};
+
+// Function to retrieve weather information based on location
+Weather getWeather(string loc)
+{
+    // Here, you would typically call an API or perform some other data retrieval process
+    // For simplicity, we will create a mock Weather object with dummy values
+
+    string condition = "Cloudy";
+    double speed = 5.5;
+    int press = 1018;
+    int humid = 80;
+    int level = 3056;
+    string rise = "06:00";
+    string set = "18:00";
+    double lat = 0.0;
+    double lon = 0.0;
+
+    Weather weather(loc, condition, speed, press, humid, level, rise, set, lat, lon);
+    return weather;
+}
+
+int main() {
+    char choice;
+    do {
+        string location;
+        cout << "Enter location: ";
+        cin >> location;
+        string date;
+  
+
+        Weather weatherData = getWeather(location);
+        weatherData.displayWeather();
+
+        cout << "Do you want to search for weather again? [Y/N]: ";
+        cin >> choice;
+    } while (choice == 'Y' || choice == 'y');
+
+    cout << "Thank you! Visit again :)" << endl;
+
+    return 0;
+}
